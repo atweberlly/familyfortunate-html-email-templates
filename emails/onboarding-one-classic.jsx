@@ -3,11 +3,12 @@ import { Html } from '@react-email/html'
 import { Section } from '@react-email/section'
 import { Text } from '@react-email/text'
 import { Link } from '@react-email/link'
+import { Img } from '@react-email/img'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 const base = {
   margin: 0,
-  color: '#000',
+  color: '#07222D',
   fontFamily: [...defaultTheme.fontFamily.sans],
   backgroundColor: '#fff',
   WebkitFontSmoothing: 'antialiased',
@@ -29,9 +30,15 @@ const text = {
     fontSize: '16px',
     lineHeight: '24px',
   },
+  secondary: {
+    margin: '0 0 16px 0',
+    color: '#F9F8F3',
+    fontSize: '16px',
+    lineHeight: '24px',
+  },
   heading: {
     margin: '0 0 16px 0',
-    color: '#101828',
+    color: '#07222D',
     fontWeight: '700',
     fontSize: '30px',
     lineHeight: '38px',
@@ -44,7 +51,7 @@ const li = {
 }
 
 const link = {
-  color: '#21c0ad',
+  color: '#E0DCC8',
   textDecoration: 'underline',
 }
 
@@ -54,14 +61,21 @@ export default function Email() {
       <head>
         <meta httpEquiv="Content-Type" content="text/html;charset=UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Onboarding One</title>
+        <title>Ready to get started?</title>
       </head>
 
       <body style={base}>
         <Section style={container}>
-          <Text style={text.heading}>Hello, Jonah!</Text>
+          <Img
+            src="/static/logo.png"
+            alt="Family Fortunate Logo"
+            width="150"
+            height="80"
+            style={{ marginBottom: '16px' }}
+          />
+          <Text style={text.heading}>Ready to get started?</Text>
 
-          <Text style={text.base}>Ready to get started?</Text>
+          <Text style={text.base}>Hello, name!</Text>
 
           <Text style={text.base}>
             You can approach telling your story in exactly your own unique way, so your year&apos;s
@@ -73,62 +87,50 @@ export default function Email() {
             waiting you might want to have a look around your personal membership platform, so here
             are some tips for finding your way around the Family Fortunate website.
           </Text>
+          <div
+            style={{
+              backgroundColor: '#07222D',
+              padding: '24px',
+              color: '#F9F8F3',
+              marginBottom: '12px',
+            }}
+          >
+            <ul>
+              <li style={li}>
+                Sign in{' '}
+                <Link href="/sign-in" style={link}>
+                  here
+                </Link>
+              </li>
 
-          <ul style={text.base}>
-            <li style={li}>
-              Sign in{' '}
-              <Link href="#" style={link}>
-                here
-              </Link>
-            </li>
+              <li style={li}>
+                <Link href="/frequently-asked-questions" style={link}>
+                  Help
+                </Link>{' '}
+                - You have access to an extensive online help centre if you need assistance finding
+                your way around your personal membership center.
+              </li>
+            </ul>
 
-            <li style={li}>
-              <Link href="#" style={link}>
-                Help
-              </Link>{' '}
-              - You have access to an extensive online help centre if you need assistance finding
-              your way around your personal membership center.
-            </li>
-          </ul>
+            <Text style={text.secondary}>
+              You have access to more than 100 unique questions during your membership, but you have
+              even more options than that.
+            </Text>
 
-          <Text style={text.base}>
-            You have access to more than 500 unique questions during your membership, but you have
-            even more options than that.
-          </Text>
-
-          <ul style={text.base}>
-            <li style={li}>
-              <Link href="#" style={link}>
-                Select a different question
-              </Link>
-            </li>
-
-            <li style={li}>
-              <Link href="#" style={link}>
-                Write your own question
-              </Link>
-            </li>
-
-            <li style={li}>
-              <Link href="#" style={link}>
-                Change the wording of your question for the week
-              </Link>
-            </li>
-
-            <li style={li}>
-              <Link href="#" style={link}>
-                Change the frequency of your emailed questions
-              </Link>
-            </li>
-
-            <li style={li}>
-              <Link href="#" style={link}>
-                Edit your story
-              </Link>{' '}
-              - You can continue to make changes to your stories right throughout your membership
-            </li>
-          </ul>
-
+            <ul>
+              <li style={li}>
+                <Link href="/member/questions" style={link}>
+                  Select a different question
+                </Link>
+              </li>
+              <li style={li}>
+                <Link href="/member/stories" style={link}>
+                  Edit your story
+                </Link>{' '}
+                - You can continue to make changes to your stories right throughout your membership
+              </li>
+            </ul>
+          </div>
           <Text style={text.base}>
             I hope you enjoy the exciting journey you&apos;re about to start as you recapture your
             memories with the help of Family Fortunate.
@@ -139,15 +141,19 @@ export default function Email() {
             <span style={{ fontWeight: 700 }}>Rachel</span> <br />
             Founder of Family Fortunate
           </Text>
-
-          <div
-            style={{
-              minHeight: '320px',
-              marginBottom: '16px',
-              borderRadius: '16px',
-              backgroundColor: '#d0d5dd',
-            }}
-          />
+          <Link href="#" style={link}>
+            <div
+              style={{
+                minHeight: '249px',
+                marginBottom: '16px',
+                borderRadius: '16px',
+                backgroundImage: 'url(/static/email-banner-1.png)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'contain',
+              }}
+            />
+          </Link>
 
           <Text style={text.base}>
             Stay updated by following us on our social media accounts to get more updates on our new
@@ -165,8 +171,9 @@ export default function Email() {
             }}
           >
             <a
-              href="#"
+              href="https://www.facebook.com/familyfortunate"
               target="_blank"
+              rel="noreferrer"
               style={{
                 width: '30px',
                 height: '30px',
@@ -180,8 +187,9 @@ export default function Email() {
             </a>
 
             <a
-              href="#"
+              href="https://www.instagram.com/familyfortunate"
               target="_blank"
+              rel="noreferrer"
               style={{
                 width: '30px',
                 height: '30px',
@@ -193,60 +201,15 @@ export default function Email() {
                 style={{ height: '100%', width: '100%' }}
               />
             </a>
-
-            <a
-              href="#"
-              target="_blank"
-              style={{
-                width: '30px',
-                height: '30px',
-              }}
-            >
-              <img
-                src="/static/Twitter.png"
-                alt="Twitter"
-                style={{ height: '100%', width: '100%' }}
-              />
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              style={{
-                width: '30px',
-                height: '30px',
-              }}
-            >
-              <img
-                src="/static/LinkedIn.png"
-                alt="LinkedIn"
-                style={{ height: '100%', width: '100%' }}
-              />
-            </a>
-
-            <a
-              href="#"
-              target="_blank"
-              style={{
-                width: '30px',
-                height: '30px',
-              }}
-            >
-              <img
-                src="/static/Pinterest.png"
-                alt="Pinterest"
-                style={{ height: '100%', width: '100%' }}
-              />
-            </a>
           </div>
 
           <Text style={{ textAlign: 'center', ...text.base }}>
-            <a href="#" style={link}>
-              Unsubscribe
+            <a target="_blank" href="/privacy-policy" style={text.base}>
+              Privacy Policy
             </a>{' '}
-            | Privacy Policy <br />
-            144 Parry St, Newcastle West NSW 2302, Australia <br />
-            &copy; 2022. Family Fortunate
+            <br />
+            61-63 Parry St Newcastle, NSW Australia <br />
+            &copy; 2023. Family Fortunate
           </Text>
         </Section>
       </body>
